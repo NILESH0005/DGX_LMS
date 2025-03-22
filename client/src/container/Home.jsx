@@ -82,14 +82,14 @@ const Home = () => {
     ];
 
     const usSlides = [
-        images.us1,
-        images.us2,
-        images.us3,
+        // images.us1,
+        // images.us2,
+        // images.us3,
         images.us4,
         images.us5,
         images.us6,
         images.us7,
-        images.us9
+        // images.us9
     ]
 
     const [currentIndexUS, setCurrentIndexUS] = useState(0);
@@ -98,7 +98,7 @@ const Home = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndexUS((prevIndex) => (prevIndex === usSlides.length - 1 ? 0 : prevIndex + 1));
-        }, 3000); 
+        }, 3000);
 
         return () => clearInterval(interval);
     }, [usSlides.length]);
@@ -379,11 +379,11 @@ const Home = () => {
                     <h1 className="text-center text-2xl font-bold leading-8 text-DGXblue">
                         NVIDIA DGX systems are at the forefront of AI research and innovation. Trusted by the world&apos;s most innovative universities and corporations, DGX provides the computational power needed to tackle the most complex AI challenges. Whether advancing research in academic institutions or driving breakthroughs in industry, DGX stands as the premier choice for those leading the charge in artificial intelligence.
                     </h1>
-                    
+
                 </div>
                 <div className="mt-10 flex items-center justify-center">
-                        <LogoMarquee />
-                    </div>
+                    <LogoMarquee />
+                </div>
             </div>
 
 
