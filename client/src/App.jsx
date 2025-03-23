@@ -33,10 +33,14 @@ import HomeAfterLoginComponent from './component/HomeAfterLoginComponent.jsx';
 import CreateICSFile from './component/CreateICSFile.jsx';
 import LearningModule from './component/CommunityGuidelines.jsx';
 import Lms from './component/LMS/Lms.jsx';
-import ModuleDetail from './component/LMS/ModuleDetail.jsx';
+import TeachingModules from './component/LMS/TeachingModules.jsx'
 
 // import BlogManager from './Admin/Components/BlogManager.jsx';
-
+import DeepLearningKit from './component/LMS/DeepLearningKit.jsx';
+import AiRoboticsKit from './component/LMS/AiRoboticsKit.jsx';
+import NvidiaIntro from './component/LMS/NvidiaIntro.jsx';
+import IndustrialMetaverseKit from './component/LMS/IndustrialMetaverseKit.jsx';
+import GenAiKit from './component/LMS/GenAiKit.jsx';
 
 
 
@@ -71,12 +75,17 @@ function App() {
             <Route path='/HomeAfterLoginComponent' element={<HomeAfterLoginComponent />} />
             {/* <Route path='/PostCode' element={<PostCode />} /> */}
             <Route path='/CreateICSFile' element={<CreateICSFile />} />
-        <Route path="/category/:category/subcategory/:subcategory" element={<ModuleDetail />} />
 
 
             {/* LMS */}
             <Route path='/Lms' element={<Lms />} />
-            <Route path="/category/:category/subcategory/:subcategory" element={<ModuleDetail />} />
+            <Route path='/teaching-modules' element={<TeachingModules />} />
+            <Route path="/edge-ai-robotics-kit" element={<AiRoboticsKit />} />
+            <Route path="/deep-learning-kit" element={<DeepLearningKit />} />
+            <Route path="/generative-ai-kit" element={<GenAiKit />} />
+            <Route path="/industrial-metaverse-kit" element={<IndustrialMetaverseKit />} />
+            <Route path="/nvidia-intro" element={<NvidiaIntro />} />
+            
 
             
 

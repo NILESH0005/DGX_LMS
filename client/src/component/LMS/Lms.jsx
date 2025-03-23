@@ -25,7 +25,8 @@ export const Lms = () => {
   ];
 
   const handleCardClick = (category, subcategory) => {
-    navigate(`/category/${category}/subcategory/${subcategory}`);
+    // Navigate to the TeachingModules route
+    navigate('/teaching-modules', { state: { category, subcategory } });
   };
 
   return (

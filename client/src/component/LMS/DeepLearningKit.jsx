@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const ModuleDetail = () => {
+const DeepLearningKit = () => {
     const { category, subcategory } = useParams();
     const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState(null);
@@ -148,4 +148,4 @@ const ModuleDetail = () => {
     );
 };
 
-export default ModuleDetail;
+export default DeepLearningKit;
