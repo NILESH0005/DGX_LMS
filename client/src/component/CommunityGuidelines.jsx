@@ -6,7 +6,7 @@ const LearningModule = () => {
   // ✅ Replace with actual Google Drive File IDs
   const files = [
     { name: "Deep Learning Guide", type: "pdf", id: "1ZJ_2u-I1oCPM3MvOT6IPpUboHRjR4iNW" },
-    { name: "Edge AI Basics (TXT)", type: "txt", id: "1LOPOXRwh3BjQMZJCCZYXApUlhH-lEUEt" },
+    { name: "Edge AI Basics (TXT)", type: "txt", id: "YOUR_TXT_FILE_ID" },
     { name: "Generative AI Slides", type: "ppt", id: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb" },
   ];
 
