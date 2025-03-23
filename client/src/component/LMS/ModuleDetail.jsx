@@ -38,7 +38,71 @@ const ModuleDetail = () => {
                 { id: 28, title: "Lecture 2", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
             ],
         },
-        // Add more subcategories as needed
+        {
+            id: 5,
+            title: "Energy Based Learning",
+            path: "energy based learning",
+            nested: [
+                { id: 29, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb" },
+                { id: 30, title: "Lecture 2", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+                { id: 31, title: "Lecture 2", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+
+            ],
+        },
+        {
+            id: 6,
+            title: "Optimization Techniques",
+            path: "optimization techniques",
+            nested: [
+                { id: 32, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb" },
+            ],
+        },
+        {
+            id: 7,
+            title: "Learning With Memory",
+            path: "learning with memory",
+            nested: [
+                { id: 33, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb" },
+                { id: 34, title: "Lecture 2", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+                { id: 35, title: "Lecture 3", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+                { id: 36, title: "Lecture 4", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+                { id: 37, title: "Lecture 5", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+                { id: 38, title: "Lecture 6", path: "lecture-2", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm" },
+
+            ],
+        },
+        {
+            id: 8,
+            title: "Future Chalenges",
+            path: "future chalenges",
+            nested: [
+                { id: 39, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb" },
+            ],
+        },
+        {
+            id: 9,
+            title: "Quick Start Guide",
+            path: "quick-start-guide",
+            fileId: "1QUICKSTARTGUIDEID", // Add the corresponding file ID
+        },
+        {
+            id: 10,
+            title: "2nd Release Note",
+            path: "2nd-release-note",
+            fileId: "1RELEASENOTEID", // Add the corresponding file ID
+        },
+        {
+            id: 11,
+            title: "DLI Online Course and Certificate",
+            path: "dli-online-course-and-certificate",
+            fileId: "1DLICOURSEID", // Add the corresponding file ID
+        },
+        {
+            id: 12,
+            title: "Syllabus",
+            path: "syllabus",
+            fileId: "1SYLLABUSID", // Add the corresponding file ID
+        },
     ];
 
     // Example data for files
@@ -64,6 +128,20 @@ const ModuleDetail = () => {
                 return "";
         }
     };
+
+    // useEffect(() => {
+    //     const disableShortcuts = (e) => {
+    //         if (e.ctrlKey || e.metaKey) {
+    //             e.preventDefault();
+    //         }
+    //     };
+
+    //     window.addEventListener("keydown", disableShortcuts);
+
+    //     return () => {
+    //         window.removeEventListener("keydown", disableShortcuts);
+    //     };
+    // }, []);
 
     // Auto-select the first file on load
     useEffect(() => {
@@ -115,7 +193,7 @@ const ModuleDetail = () => {
                                             key={nestedSub.id}
                                             className={`hover:bg-gray-700 hover:text-white p-2 rounded cursor-pointer ${subcategory === nestedSub.path ? "bg-gray-700 text-white" : ""
                                                 }`}
-                                            onClick={() => handleSubcategoryClick(nestedSub.path, nestedSub.fileId)}
+                                            // onClick={() => handleSubcategoryClick(nestedSub.path, nestedSub.fileId)}
                                         >
                                             {nestedSub.title}
                                         </li>
@@ -134,7 +212,9 @@ const ModuleDetail = () => {
 
                 {/* Display the selected file in iframe */}
                 {selectedFile && (
-                    <div className="w-full max-w-6xl h-[80vh] border rounded-lg shadow overflow-hidden">
+                    <div className="w-full max-w-6xl h-[80vh] border rounded-lg shadow overflow-hidden "
+                    onContextMenu={(e) => e.preventDefault()}>
+                            {/* <div className="absolute inset-0 z-10"></div> */}
                         <iframe
                             key={selectedFile.id} // Add key to force re-render
                             src={getEmbedURL(selectedFile)}
@@ -142,6 +222,7 @@ const ModuleDetail = () => {
                             allowFullScreen
                         />
                     </div>
+                    
                 )}
             </div>
         </div>
