@@ -111,6 +111,13 @@ const DeepLearningKit = () => {
             fileId: "16vkcuE7xa0Syh0mZAfCfxpGdm93v4tdj",
             type: "pdf",
         },
+        {
+            id: 14,
+            title: "Video Trial",
+            path: "video-trial",
+            fileId: "1ufLceJD1z_AKRIdQjwgHk5aMuaC9PYXj",
+            type: "mp4", 
+        }
     ];
 
     const handleFeedbackSubmit = (fileId, rating, comment) => {
@@ -137,6 +144,8 @@ const DeepLearningKit = () => {
                 return `https://docs.google.com/presentation/d/${fileId}/embed`;
             case "pdf":
                 return `https://drive.google.com/file/d/${fileId}/preview`;
+            case "mp4":
+                return `https://drive.google.com/uc?export=download&id=${fileId}`;
             case "txt":
                 return `https://drive.google.com/uc?export=view&id=${fileId}`;
             default:
@@ -239,7 +248,6 @@ const DeepLearningKit = () => {
             {/* Main Content */}
             <div className="flex-1 p-4 flex flex-col items-center justify-center">
                 <h1 className="text-2xl font-bold mb-4 text-center">{category}</h1>
-                {/* <p className="text-gray-500 mb-4 text-center">Selected Subcategory: {subcategory}</p> */}
                 {selectedFileId && (
                     <div className="w-full max-w-7xl h-[90vh] border rounded-lg shadow overflow-hidden relative"
                         onContextMenu={(e) => e.preventDefault()}>
@@ -255,15 +263,24 @@ const DeepLearningKit = () => {
                                 zIndex: 10, // Ensure it's above the iframe
                             }}
                         />
-                        <iframe
-                            key={selectedFileId}
-                            src={getEmbedURL(selectedFileId, selectedFileType)}
-                            className="w-full h-full"
-                            allowFullScreen
-                        />
+                        {selectedFileType === "mp4" ? (
+                            <video
+                                key={selectedFileId}
+                                src={getEmbedURL(selectedFileId, selectedFileType)}
+                                className="w-full h-full"
+                                controls // Add video controls (play, pause, volume, etc.)
+                            />
+                        ) : (
+                            <iframe
+                                key={selectedFileId}
+                                src={getEmbedURL(selectedFileId, selectedFileType)}
+                                className="w-full h-full"
+                                allowFullScreen
+                            />
+                        )}
                     </div>
                 )}
-                 {selectedFileId && (
+                {selectedFileId && (
                     <FeedbackForm
                         fileId={selectedFileId}
                         onSubmit={handleFeedbackSubmit}
