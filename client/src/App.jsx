@@ -41,6 +41,7 @@ import AiRoboticsKit from './component/LMS/AiRoboticsKit.jsx';
 import NvidiaIntro from './component/LMS/NvidiaIntro.jsx';
 import IndustrialMetaverseKit from './component/LMS/IndustrialMetaverseKit.jsx';
 import GenAiKit from './component/LMS/GenAiKit.jsx';
+import DatasetModules from './component/LMS/DatasetModules.jsx';
 
 
 
@@ -86,6 +87,8 @@ function App() {
             <Route path="/industrial-metaverse-kit" element={<IndustrialMetaverseKit />} />
             <Route path="/nvidia-intro" element={<NvidiaIntro />} />
             
+
+            <Route path='/data-modules' element={<DatasetModules />} />
 
             
 
