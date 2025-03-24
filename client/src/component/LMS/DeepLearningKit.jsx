@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import FeedbackForm from "./FeedBackForm";
 
 const DeepLearningKit = () => {
     const { category, subcategory } = useParams();
@@ -7,6 +8,8 @@ const DeepLearningKit = () => {
     const [selectedFileId, setSelectedFileId] = useState(null); // Track the selected fileId
     const [expandedSubcategory, setExpandedSubcategory] = useState(null);
     const [selectedFileType, setSelectedFileType] = useState("ppt"); // Default to PPT
+    const [feedback, setFeedback] = useState([]);
+
 
     // Example data for subcategories with nested items
     const subcategories = [
@@ -109,6 +112,23 @@ const DeepLearningKit = () => {
             type: "pdf",
         },
     ];
+
+    const handleFeedbackSubmit = (fileId, rating, comment) => {
+        const newFeedback = {
+            fileId,
+            rating,
+            comment,
+            timestamp: new Date().toISOString(),
+        };
+
+        // Save feedback to localStorage
+        const updatedFeedback = [...feedback, newFeedback];
+        localStorage.setItem("userFeedback", JSON.stringify(updatedFeedback));
+        setFeedback(updatedFeedback);
+
+        // Optionally, send feedback to a backend server
+        sendFeedbackToServer(newFeedback);
+    };
 
     // Get embed link
     const getEmbedURL = (fileId, type = "ppt") => {
@@ -217,11 +237,11 @@ const DeepLearningKit = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 p-6 flex flex-col items-center justify-center">
+            <div className="flex-1 p-4 flex flex-col items-center justify-center">
                 <h1 className="text-2xl font-bold mb-4 text-center">{category}</h1>
-                <p className="text-gray-500 mb-4 text-center">Selected Subcategory: {subcategory}</p>
+                {/* <p className="text-gray-500 mb-4 text-center">Selected Subcategory: {subcategory}</p> */}
                 {selectedFileId && (
-                    <div className="w-full max-w-6xl h-[80vh] border rounded-lg shadow overflow-hidden relative"
+                    <div className="w-full max-w-7xl h-[90vh] border rounded-lg shadow overflow-hidden relative"
                         onContextMenu={(e) => e.preventDefault()}>
                         {/* Transparent overlay to block the pop-out button */}
                         <div
@@ -242,6 +262,12 @@ const DeepLearningKit = () => {
                             allowFullScreen
                         />
                     </div>
+                )}
+                 {selectedFileId && (
+                    <FeedbackForm
+                        fileId={selectedFileId}
+                        onSubmit={handleFeedbackSubmit}
+                    />
                 )}
             </div>
         </div>
