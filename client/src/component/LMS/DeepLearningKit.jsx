@@ -11,6 +11,13 @@ const DeepLearningKit = () => {
     // Example data for subcategories with nested items
     const subcategories = [
         {
+            id: 9,
+            title: "Quick Start Guide",
+            path: "quick-start-guide",
+            fileId: "1ZJ_2u-I1oCPM3MvOT6IPpUboHRjR4iNW",
+            type: "pdf",
+        },
+        {
             id: 2,
             title: "Module 1: Introduction to Machine Learning",
             path: "introduction-to-machine-learning",
@@ -79,13 +86,6 @@ const DeepLearningKit = () => {
             path: "future chalenges",
             fileId: "1KGQ00fu9ZLQjwFHQOxw7PASmY0xAaLkg",
 
-        },
-        {
-            id: 9,
-            title: "Quick Start Guide",
-            path: "quick-start-guide",
-            fileId: "1ZJ_2u-I1oCPM3MvOT6IPpUboHRjR4iNW",
-            type: "pdf",
         },
         {
             id: 10,

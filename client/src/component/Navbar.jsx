@@ -36,8 +36,8 @@ const Navbar = () => {
     };
 
     const navLinks = [
-        { label: 'Community Guidelines', to: '/CommunityGuidelines', icon: faBook },
-        { label: 'LMS', to: '/Lms', icon: faBook }
+        // { label: 'Community Guidelines', to: '/CommunityGuidelines', icon: faBook },
+        { label: 'OUR LEARN HUB', to: '/Lms', icon: faBook }
     ];
 
     return (
