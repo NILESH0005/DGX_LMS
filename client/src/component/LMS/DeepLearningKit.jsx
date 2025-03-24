@@ -12,41 +12,41 @@ const DeepLearningKit = () => {
     const subcategories = [
         {
             id: 2,
-            title: "Introduction to Machine Learning",
+            title: "Module 1: Introduction to Machine Learning",
             path: "introduction-to-machine-learning",
             nested: [
-                { id: 21, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb", type: "ppt"  },
+                { id: 21, title: "Lecture 1", path: "lecture-1", fileId: "1cxu8olBlBx47UuOOvXksCkzoOG4FWYTb", type: "ppt" },
                 { id: 22, title: "Lecture 2", path: "lecture-1", fileId: "1tCmysnYqZ8_9OkSVcSB_2bqEVXM4JEDm", type: "ppt" },
                 { id: 23, title: "Lecture 3", path: "lecture-1", fileId: "1SB8U0anqOUHV28hVKOIrFXI_AEdDr6Gx", type: "ppt" },
             ],
         },
         {
             id: 3,
-            title: "Introduction to Deep Learning",
+            title: "Module 2: Introduction to Deep Learning",
             path: "introduction-to-deep-learning",
             nested: [
-                { id: 24, title: "Lecture 1", path: "lecture-2", fileId: "1SJpcG-IkIErkKVsgVdklSnFPzbZzNnLE", type: "ppt"  },
-                { id: 25, title: "Lecture 2", path: "lecture-2", fileId: "1RTs5sYGhC4I4-IK5B70QzNytQnbCLCq2", type: "ppt"  },
-                { id: 26, title: "Lecture 3", path: "lecture-2", fileId: "11BqsB-JjyRhY5GdVeONPZB8Iqelozqwy", type: "ppt"  },
+                { id: 24, title: "Lecture 1", path: "lecture-2", fileId: "1SJpcG-IkIErkKVsgVdklSnFPzbZzNnLE", type: "ppt" },
+                { id: 25, title: "Lecture 2", path: "lecture-2", fileId: "1RTs5sYGhC4I4-IK5B70QzNytQnbCLCq2", type: "ppt" },
+                { id: 26, title: "Lecture 3", path: "lecture-2", fileId: "11BqsB-JjyRhY5GdVeONPZB8Iqelozqwy", type: "ppt" },
             ],
         },
         {
             id: 4,
-            title: "Convolutional Neural Networks",
+            title: "Module 3: Convolutional Neural Networks",
             path: "convolutional-neural-networks",
             nested: [
-                { id: 27, title: "Lecture 1", path: "lecture-1", fileId: "1B6tUpU5OK9yPrORfOSEidwnG_1SYajL5", type: "ppt"  },
-                { id: 28, title: "Lecture 2", path: "lecture-2", fileId: "10xmgrDssO2b0Usi9G2OGibo2pjtLGnYH", type: "ppt"  },
-                { id: 29, title: "Lecture 3", path: "lecture-3", fileId: "1IXb-sDk8_LK0SGWgikZ8JiYcijtMJDdn", type: "ppt"  },
+                { id: 27, title: "Lecture 1", path: "lecture-1", fileId: "1B6tUpU5OK9yPrORfOSEidwnG_1SYajL5", type: "ppt" },
+                { id: 28, title: "Lecture 2", path: "lecture-2", fileId: "10xmgrDssO2b0Usi9G2OGibo2pjtLGnYH", type: "ppt" },
+                { id: 29, title: "Lecture 3", path: "lecture-3", fileId: "1IXb-sDk8_LK0SGWgikZ8JiYcijtMJDdn", type: "ppt" },
 
             ],
         },
         {
             id: 5,
-            title: "Energy Based Learning",
+            title: "Module 4: Energy Based Learning",
             path: "energy based learning",
             nested: [
-                { id: 30, title: "Lecture 2", path: "lecture-2", fileId: "1CIi-gmxYTyRM0VcrtVenAXmG5W4w5HCj", type: "ppt"  },
+                { id: 30, title: "Lecture 2", path: "lecture-2", fileId: "1CIi-gmxYTyRM0VcrtVenAXmG5W4w5HCj", type: "ppt" },
                 { id: 31, title: "Lecture 2", path: "lecture-2", fileId: "1Mf4YV6XYCE56FVOzomyCNj-gHdFjydMp", type: "ppt" },
                 { id: 32, title: "Lecture 3", path: "lecture-3", fileId: "10XXxuyhk46g2B5VZ7Bn-7c9F65setZHk", type: "ppt" },
 
@@ -54,7 +54,7 @@ const DeepLearningKit = () => {
         },
         {
             id: 6,
-            title: "Optimization Techniques",
+            title: "Module 5: Optimization Techniques",
             path: "optimization techniques",
             nested: [
                 { id: 33, title: "Lecture 1", path: "lecture-1", fileId: "1IAs20TnsM3Zebpnrd6yROezZ5JnXhcfg", type: "ppt" },
@@ -62,7 +62,7 @@ const DeepLearningKit = () => {
         },
         {
             id: 7,
-            title: "Learning With Memory",
+            title: "Module 6: Learning With Memory",
             path: "learning with memory",
             nested: [
                 { id: 34, title: "Lecture 2", path: "lecture-2", fileId: "1NsfQjhY4Dpn1y2aV5hOVOelN7UQY_X4z" },
@@ -75,10 +75,10 @@ const DeepLearningKit = () => {
         },
         {
             id: 8,
-            title: "Future Chalenges",
+            title: "Module 7: Future Chalenges",
             path: "future chalenges",
             fileId: "1KGQ00fu9ZLQjwFHQOxw7PASmY0xAaLkg",
-            
+
         },
         {
             id: 9,
@@ -150,6 +150,28 @@ const DeepLearningKit = () => {
         setExpandedSubcategory((prev) => (prev === id ? null : id));
     };
 
+    useEffect(() => {
+        const disableRightClick = (e) => {
+            e.preventDefault();
+        };
+
+        const disableKeyboardShortcuts = (e) => {
+            // Disable Ctrl+S, Ctrl+P, etc.
+            if (e.ctrlKey && (e.key === 's' || e.key === 'p')) {
+                e.preventDefault();
+            }
+        };
+
+        document.addEventListener('contextmenu', disableRightClick);
+        document.addEventListener('keydown', disableKeyboardShortcuts);
+
+        return () => {
+            document.removeEventListener('contextmenu', disableRightClick);
+            document.removeEventListener('keydown', disableKeyboardShortcuts);
+        };
+    }, []);
+
+
     return (
         <div className="flex h-screen bg-background text-foreground">
             {/* Sidebar */}
@@ -198,13 +220,23 @@ const DeepLearningKit = () => {
             <div className="flex-1 p-6 flex flex-col items-center justify-center">
                 <h1 className="text-2xl font-bold mb-4 text-center">{category}</h1>
                 <p className="text-gray-500 mb-4 text-center">Selected Subcategory: {subcategory}</p>
-
-                {/* Display the selected file in iframe */}
                 {selectedFileId && (
-                    <div className="w-full max-w-6xl h-[80vh] border rounded-lg shadow overflow-hidden"
+                    <div className="w-full max-w-6xl h-[80vh] border rounded-lg shadow overflow-hidden relative"
                         onContextMenu={(e) => e.preventDefault()}>
+                        {/* Transparent overlay to block the pop-out button */}
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                right: 0,
+                                width: "50px", // Adjust based on the button size
+                                height: "50px",
+                                backgroundColor: "transparent",
+                                zIndex: 10, // Ensure it's above the iframe
+                            }}
+                        />
                         <iframe
-                            key={selectedFileId} // Add key to force re-render
+                            key={selectedFileId}
                             src={getEmbedURL(selectedFileId, selectedFileType)}
                             className="w-full h-full"
                             allowFullScreen
