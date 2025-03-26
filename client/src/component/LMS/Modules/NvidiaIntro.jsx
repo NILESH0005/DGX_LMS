@@ -134,7 +134,7 @@ const NvidiaIntro = () => {
         <div className="flex h-screen bg-background text-foreground">
             {/* Sidebar */}
             <div className="w-64 bg-gray-800 text-white p-4 border-r border-gray-700">
-                <h2 className="text-lg font-semibold mb-4">NVIDIA Resources</h2>
+                <h2 className="text-4lg font-semibold mb-4">NVIDIA Resources</h2>
                 <ul className="space-y-2">
                     {subcategories.map((sub) => (
                         <li key={sub.id}>

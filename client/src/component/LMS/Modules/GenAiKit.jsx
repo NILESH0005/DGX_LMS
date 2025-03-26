@@ -398,7 +398,7 @@ const GenAiKit = () => {
 
             {/* Main Content */}
             <div className="flex-1 p-4 flex flex-col items-center justify-center">
-                <h1 className="text-2xl font-bold mb-4 text-center">Generative AI Teaching Kit</h1>
+                <h1 className="text-4xl font-bold mb-4 text-center">Generative AI Teaching Kit</h1>
                 {selectedFileId && (
                     <div className="w-full max-w-7xl h-[90vh] border rounded-lg shadow overflow-hidden relative"
                         onContextMenu={(e) => e.preventDefault()}>

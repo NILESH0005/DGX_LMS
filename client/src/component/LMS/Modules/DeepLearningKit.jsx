@@ -5,13 +5,11 @@ import FeedbackForm from "../FeedBackForm.jsx";
 const DeepLearningKit = () => {
     const { category, subcategory } = useParams();
     const navigate = useNavigate();
-    const [selectedFileId, setSelectedFileId] = useState(null); // Track the selected fileId
+    const [selectedFileId, setSelectedFileId] = useState(null);
     const [expandedSubcategory, setExpandedSubcategory] = useState(null);
-    const [selectedFileType, setSelectedFileType] = useState("ppt"); // Default to PPT
+    const [selectedFileType, setSelectedFileType] = useState("ppt");
     const [feedback, setFeedback] = useState([]);
 
-
-    // Example data for subcategories with nested items
     const subcategories = [
         {
             id: 9,
@@ -202,39 +200,38 @@ const DeepLearningKit = () => {
 
 
     return (
-        
         <div className="flex h-screen bg-background text-foreground">
-
-            {/* Sidebar */}
-            <div className="w-64 bg-gray-800 text-white p-4 border-r border-gray-700">
-                <h2 className="text-lg font-semibold mb-4">Subcategories</h2>
+        {/* Sidebar */}
+        <div className="w-64 bg-gray-800 text-white p-4 border-r border-gray-700">
+            <h2 className="text-lg font-semibold mb-4">Deep Learning Kit</h2>
                 <ul className="space-y-2">
                     {subcategories.map((sub) => (
                         <li key={sub.id}>
                             <div
-                                className={`hover:bg-gray-700 hover:text-white p-2 rounded cursor-pointer ${subcategory === sub.path ? "bg-gray-700 text-white" : ""
-                                    }`}
+                                className={`hover:bg-gray-700 hover:text-white p-2 rounded cursor-pointer ${
+                                    subcategory === sub.path ? "bg-gray-700 text-white" : ""
+                                }`}
                                 onClick={() => {
                                     if (sub.nested) {
                                         toggleNestedSubcategories(sub.id);
                                     } else {
-                                        handleSubcategoryClick(sub.path, sub.fileId, sub.type); // Pass type for non-nested
+                                        handleSubcategoryClick(sub.path, sub.fileId, sub.type);
                                     }
                                 }}
                             >
                                 {sub.title}
                             </div>
-                            {/* Nested subcategories */}
                             {sub.nested && expandedSubcategory === sub.id && (
                                 <ul className="pl-4 mt-2 space-y-2">
                                     {sub.nested.map((nestedSub) => (
                                         <li
                                             key={nestedSub.id}
-                                            className={`hover:bg-gray-700 hover:text-white p-2 rounded cursor-pointer ${subcategory === nestedSub.path ? "bg-gray-700 text-white" : ""
-                                                }`}
+                                            className={`hover:bg-gray-700 hover:text-white p-2 rounded cursor-pointer ${
+                                                subcategory === nestedSub.path ? "bg-gray-700 text-white" : ""
+                                            }`}
                                             onClick={(e) => {
-                                                e.preventDefault(); // Prevent default navigation
-                                                handleSubcategoryClick(nestedSub.path, nestedSub.fileId, nestedSub.type); // Pass type for nested
+                                                e.preventDefault();
+                                                handleSubcategoryClick(nestedSub.path, nestedSub.fileId, nestedSub.type);
                                             }}
                                         >
                                             {nestedSub.title}
@@ -248,46 +245,67 @@ const DeepLearningKit = () => {
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 p-4 flex flex-col items-center justify-center">
-                <h1 className="text-2xl font-bold mb-4 text-center">{category}</h1>
-                {selectedFileId && (
-                    <div className="w-full max-w-7xl h-[90vh] border rounded-lg shadow overflow-hidden relative"
-                        onContextMenu={(e) => e.preventDefault()}>
-                        {/* Transparent overlay to block the pop-out button */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                top: 0,
-                                right: 0,
-                                width: "50px", // Adjust based on the button size
-                                height: "50px",
-                                backgroundColor: "transparent",
-                                zIndex: 10, // Ensure it's above the iframe
-                            }}
-                        />
-                        {selectedFileType === "mp4" ? (
-                            <video
-                                key={selectedFileId}
-                                src={getEmbedURL(selectedFileId, selectedFileType)}
-                                className="w-full h-full"
-                                controls // Add video controls (play, pause, volume, etc.)
-                            />
-                        ) : (
-                            <iframe
-                                key={selectedFileId}
-                                src={getEmbedURL(selectedFileId, selectedFileType)}
-                                className="w-full h-full"
-                                allowFullScreen
-                            />
-                        )}
-                    </div>
-                )}
-                {selectedFileId && (
-                    <FeedbackForm
-                        fileId={selectedFileId}
-                        onSubmit={handleFeedbackSubmit}
-                    />
-                )}
+            <div className="flex-1 flex flex-col">
+                {/* Header Section */}
+                <div className="bg-white shadow-sm p-6">
+                    <h1 className="text-4xl font-bold  text-center">Deep Learning Kit</h1>
+                    
+                </div>
+
+                {/* Content Area */}
+                <div className="flex-1 p-6 overflow-auto">
+                    {selectedFileId && (
+                        <div className="flex flex-col items-center">
+                            <h2 className="text-2xl font-semibold mb-4 text-DGXblue text-center">
+                                {subcategories.find(s => 
+                                    s.fileId === selectedFileId || 
+                                    (s.nested && s.nested.some(n => n.fileId === selectedFileId))
+                                )?.title}
+                            </h2>
+                            
+                            <div className="w-full max-w-7xl h-[70vh] border rounded-lg shadow-lg overflow-hidden relative"
+                                onContextMenu={(e) => e.preventDefault()}>
+                                
+                                <div
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        right: 0,
+                                        width: "50px",
+                                        height: "50px",
+                                        backgroundColor: "transparent",
+                                        zIndex: 10,
+                                    }}
+                                />
+                                
+                                {selectedFileType === "mp4" ? (
+                                    <video
+                                        key={selectedFileId}
+                                        src={getEmbedURL(selectedFileId, selectedFileType)}
+                                        className="w-full h-full"
+                                        controls
+                                    />
+                                ) : (
+                                    <iframe
+                                        key={selectedFileId}
+                                        src={getEmbedURL(selectedFileId, selectedFileType)}
+                                        className="w-full h-full"
+                                        allowFullScreen
+                                    />
+                                )}
+                            </div>
+                            
+                            {selectedFileId && (
+                                <div className="w-full max-w-7xl mt-6">
+                                    <FeedbackForm
+                                        fileId={selectedFileId}
+                                        onSubmit={handleFeedbackSubmit}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
